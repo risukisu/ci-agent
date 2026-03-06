@@ -147,6 +147,18 @@ function compareRuns(previousData, currentData) {
       });
     }
 
+    // Service page changes
+    const prevServiceUrls = (prev.subpages || []).filter(s => s.category === 'services').map(s => s.url);
+    const currServiceUrls = (curr.subpages || []).filter(s => s.category === 'services').map(s => s.url);
+    const newServices = currServiceUrls.filter(u => !prevServiceUrls.includes(u));
+    const removedServices = prevServiceUrls.filter(u => !currServiceUrls.includes(u));
+    if (newServices.length > 0) {
+      details.push({ field: 'New Service Pages', description: newServices.join(', ') });
+    }
+    if (removedServices.length > 0) {
+      details.push({ field: 'Removed Service Pages', description: removedServices.join(', ') });
+    }
+
     if (details.length > 0) {
       changes.push({ competitor: name, details });
     }
