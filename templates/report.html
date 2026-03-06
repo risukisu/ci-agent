@@ -305,6 +305,30 @@
       <div class="screenshot-label">Google Ads Transparency Center</div>
     </div>
     {{/if}}
+
+    {{#if this.subpages.length}}
+    <h3>Subpages Analyzed ({{this.subpages.length}})</h3>
+    {{#each this.subpages}}
+    <div class="info-card" style="margin-bottom: 10px;">
+      <h4>{{this.category}} — {{this.title}}</h4>
+      <p style="font-size: 10px; color: #666;">{{this.url}}</p>
+      {{#if this.metaDescription}}<p>{{this.metaDescription}}</p>{{/if}}
+      {{#if this.headings.length}}
+      <ul>
+        {{#each this.headings}}
+        <li>{{this.text}}</li>
+        {{/each}}
+      </ul>
+      {{/if}}
+      {{#if this.screenshotBase64}}
+      <div class="screenshot-container">
+        <img src="data:image/png;base64,{{this.screenshotBase64}}" alt="{{this.title}}">
+        <div class="screenshot-label">{{this.category}}: {{this.title}}</div>
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}
+    {{/if}}
   </div>
   {{/each}}
 

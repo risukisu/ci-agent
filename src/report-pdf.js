@@ -42,6 +42,16 @@ export async function generatePdfReport(scrapedData, outputDir) {
         };
       }
 
+      // Subpage screenshots
+      if (data.subpages?.length) {
+        enriched.subpages = await Promise.all(
+          data.subpages.map(async (sp) => ({
+            ...sp,
+            screenshotBase64: sp.screenshot ? await fileToBase64(sp.screenshot) : null,
+          }))
+        );
+      }
+
       return enriched;
     })
   );
