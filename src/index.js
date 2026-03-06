@@ -6,6 +6,7 @@ import { loadCompetitors } from './competitors.js';
 import { scrapeWebsite } from './scrapers/website.js';
 import { scrapeLinkedInAds } from './scrapers/linkedin-ads.js';
 import { scrapeGoogleAds } from './scrapers/google-ads.js';
+import { scrapeSubpages } from './scrapers/subpages.js';
 import { detectChanges } from './changes.js';
 import { generateMarkdownReport } from './report-md.js';
 import { generatePdfReport } from './report-pdf.js';
@@ -72,6 +73,9 @@ async function main() {
     const googlePage = await context.newPage();
     data.googleAds = await scrapeGoogleAds(googlePage, competitor, screenshotDir);
     await googlePage.close();
+
+    // Scrape subpages (services, case studies, about, etc.)
+    data.subpages = await scrapeSubpages(context, competitor, screenshotDir);
 
     scrapedData.push(data);
   }
