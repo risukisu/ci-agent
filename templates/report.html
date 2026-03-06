@@ -30,7 +30,6 @@
       text-align: center;
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: white;
-      border-radius: 0;
       padding: 60px;
     }
 
@@ -38,7 +37,6 @@
       font-size: 36px;
       font-weight: 700;
       margin-bottom: 10px;
-      letter-spacing: -0.5px;
     }
 
     .cover .subtitle {
@@ -59,100 +57,100 @@
       color: #00d2ff;
     }
 
-    /* Content pages */
+    /* Summary page */
+    .summary-section {
+      page-break-after: always;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 10px;
+    }
+
+    .summary-table th, .summary-table td {
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    .summary-table th {
+      background: #302b63;
+      color: white;
+    }
+
+    .summary-table tr:nth-child(even) { background: #f8f9fa; }
+
     h2 {
-      font-size: 20px;
+      font-size: 18px;
       color: #302b63;
       border-bottom: 3px solid #00d2ff;
       padding-bottom: 6px;
-      margin: 30px 0 15px 0;
+      margin: 20px 0 10px 0;
       page-break-after: avoid;
     }
 
     h3 {
-      font-size: 14px;
+      font-size: 13px;
       color: #24243e;
-      margin: 20px 0 8px 0;
+      margin: 12px 0 6px 0;
       page-break-after: avoid;
     }
 
-    p, li {
-      margin-bottom: 6px;
-    }
+    p, li { margin-bottom: 4px; }
+    ul { padding-left: 20px; margin-bottom: 8px; }
 
-    ul {
-      padding-left: 20px;
-      margin-bottom: 10px;
-    }
-
-    /* Competitor cards */
+    /* Competitor cards — compact */
     .competitor-section {
-      page-break-before: always;
+      page-break-inside: avoid;
+      margin-bottom: 20px;
     }
 
     .competitor-header {
       background: #f8f9fa;
       border-left: 4px solid #302b63;
-      padding: 12px 16px;
-      margin-bottom: 15px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
     }
 
     .competitor-header h2 {
       border: none;
       margin: 0;
       padding: 0;
+      font-size: 16px;
     }
 
     .competitor-header .url {
       color: #666;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 15px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .info-card {
       background: #f8f9fa;
-      border-radius: 6px;
-      padding: 12px;
+      border-radius: 4px;
+      padding: 8px;
     }
 
     .info-card h4 {
-      font-size: 11px;
+      font-size: 9px;
       text-transform: uppercase;
       color: #666;
-      margin-bottom: 4px;
-    }
-
-    .screenshot-container {
-      margin: 12px 0;
-      text-align: center;
-    }
-
-    .screenshot-container img {
-      max-width: 100%;
-      max-height: 400px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      object-fit: contain;
-    }
-
-    .screenshot-label {
-      font-size: 10px;
-      color: #888;
-      margin-top: 4px;
-      text-align: center;
+      margin-bottom: 3px;
     }
 
     .badge {
       display: inline-block;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 9px;
       font-weight: 600;
     }
 
@@ -160,55 +158,20 @@
     .badge-warning { background: #fff3cd; color: #856404; }
     .badge-error { background: #f8d7da; color: #721c24; }
 
-    .headings-list {
+    .services-list {
       columns: 2;
-      column-gap: 20px;
-    }
-
-    .body-excerpt {
-      background: #f8f9fa;
-      padding: 10px;
-      border-radius: 4px;
+      column-gap: 15px;
       font-size: 10px;
-      max-height: 200px;
-      overflow: hidden;
-      color: #555;
     }
 
-    /* Footer */
     .report-footer {
-      margin-top: 40px;
-      padding-top: 15px;
+      margin-top: 30px;
+      padding-top: 10px;
       border-top: 1px solid #ddd;
       text-align: center;
-      font-size: 10px;
+      font-size: 9px;
       color: #999;
     }
-
-    .no-data {
-      color: #999;
-      font-style: italic;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 10px 0;
-      font-size: 10px;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 6px 8px;
-      text-align: left;
-    }
-
-    th {
-      background: #302b63;
-      color: white;
-    }
-
-    tr:nth-child(even) { background: #f8f9fa; }
   </style>
 </head>
 <body>
@@ -224,7 +187,48 @@
     </div>
   </div>
 
-  <!-- Competitor Details -->
+  <!-- Summary Page -->
+  <div class="summary-section">
+    <h2>Competitor Overview</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Competitor</th>
+          <th>Positioning</th>
+          <th>Key Services</th>
+          <th>Google Ads</th>
+          <th>LinkedIn Ads</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each competitors}}
+        <tr>
+          <td><strong>{{this.competitor.name}}</strong><br><span style="color:#666;font-size:9px;">{{this.competitor.url}}</span></td>
+          <td>{{this.website.metaDescription}}</td>
+          <td>
+            {{#if this.subpages}}
+              {{#each this.subpages}}
+                {{#if (eq this.category "services")}}{{this.title}}{{#unless @last}}, {{/unless}}{{/if}}
+              {{/each}}
+            {{else}}
+              See website
+            {{/if}}
+          </td>
+          <td>
+            {{#if this.googleAds.hasAds}}<span class="badge badge-success">Active</span>{{else}}<span class="badge badge-warning">None</span>{{/if}}
+          </td>
+          <td>
+            {{#if this.linkedinAds.error}}<span class="badge badge-warning">Sign-in required</span>
+            {{else if this.linkedinAds.adCount}}{{this.linkedinAds.adCount}}
+            {{else}}<span class="badge badge-warning">Unknown</span>{{/if}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Per-Competitor Detail (compact — no screenshots, no body text) -->
   {{#each competitors}}
   <div class="competitor-section">
     <div class="competitor-header">
@@ -232,11 +236,6 @@
       <span class="url">{{this.competitor.url}}</span>
     </div>
 
-    {{#if this.website}}
-    <h3>Website Overview</h3>
-    {{#if this.website.error}}
-    <p class="no-data">Scrape failed: {{this.website.error}}</p>
-    {{else}}
     <div class="info-grid">
       <div class="info-card">
         <h4>Page Title</h4>
@@ -249,86 +248,40 @@
     </div>
 
     {{#if this.website.headings.length}}
-    <h3>Key Headings</h3>
-    <ul class="headings-list">
+    <h3>Key Homepage Messages</h3>
+    <ul>
       {{#each this.website.headings}}
-      <li>{{this.text}}</li>
+        {{#if (eq this.tag "h1")}}<li><strong>{{this.text}}</strong></li>{{/if}}
       {{/each}}
     </ul>
     {{/if}}
 
-    {{#if this.website.screenshotBase64}}
-    <div class="screenshot-container">
-      <img src="data:image/png;base64,{{this.website.screenshotBase64}}" alt="{{this.competitor.name}} website">
-      <div class="screenshot-label">Homepage Screenshot</div>
-    </div>
-    {{/if}}
-
-    {{#if this.website.bodyText}}
-    <h3>Website Text Excerpt</h3>
-    <div class="body-excerpt">{{this.website.bodyText}}</div>
-    {{/if}}
-    {{/if}}
-    {{/if}}
-
-    <!-- Ad Libraries -->
-    <h3>LinkedIn Ad Library</h3>
-    {{#if this.linkedinAds.error}}
-    <p><span class="badge badge-warning">{{this.linkedinAds.error}}</span></p>
-    {{else if this.linkedinAds.adCount}}
-    <p>Results: {{this.linkedinAds.adCount}}</p>
-    {{else}}
-    <p class="no-data">Results captured in screenshot</p>
-    {{/if}}
-    {{#if this.linkedinAds.screenshotBase64}}
-    <div class="screenshot-container">
-      <img src="data:image/png;base64,{{this.linkedinAds.screenshotBase64}}" alt="{{this.competitor.name}} LinkedIn Ads">
-      <div class="screenshot-label">LinkedIn Ad Library</div>
-    </div>
-    {{/if}}
-
-    <h3>Google Ads Transparency</h3>
-    {{#if this.googleAds.error}}
-    <p><span class="badge badge-error">{{this.googleAds.error}}</span></p>
-    {{else}}
-    <p>Active Ads:
-      {{#if this.googleAds.hasAds}}
-      <span class="badge badge-success">Yes</span>
-      {{else}}
-      <span class="badge badge-warning">No / Not found</span>
-      {{/if}}
-    </p>
-    {{/if}}
-    {{#if this.googleAds.screenshotBase64}}
-    <div class="screenshot-container">
-      <img src="data:image/png;base64,{{this.googleAds.screenshotBase64}}" alt="{{this.competitor.name}} Google Ads">
-      <div class="screenshot-label">Google Ads Transparency Center</div>
-    </div>
-    {{/if}}
-
     {{#if this.subpages.length}}
-    <h3>Subpages Analyzed ({{this.subpages.length}})</h3>
-    {{#each this.subpages}}
-    <div class="info-card" style="margin-bottom: 10px;">
-      <h4>{{this.category}} — {{this.title}}</h4>
-      <p style="font-size: 10px; color: #666;">{{this.url}}</p>
-      {{#if this.metaDescription}}<p>{{this.metaDescription}}</p>{{/if}}
-      {{#if this.headings.length}}
-      <ul>
-        {{#each this.headings}}
-        <li>{{this.text}}</li>
-        {{/each}}
-      </ul>
-      {{/if}}
-      {{#if this.screenshotBase64}}
-      <div class="screenshot-container">
-        <img src="data:image/png;base64,{{this.screenshotBase64}}" alt="{{this.title}}">
-        <div class="screenshot-label">{{this.category}}: {{this.title}}</div>
-      </div>
-      {{/if}}
-    </div>
-    {{/each}}
+    <h3>Services & Pages Discovered ({{this.subpages.length}})</h3>
+    <ul class="services-list">
+      {{#each this.subpages}}
+      <li>{{this.title}} <span style="color:#999;font-size:9px;">[{{this.category}}{{#if (eq this.source "nav")}} — nav{{/if}}]</span></li>
+      {{/each}}
+    </ul>
     {{/if}}
+
+    <h3>Advertising Activity</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>Google Ads</h4>
+        {{#if this.googleAds.error}}<p>{{this.googleAds.error}}</p>
+        {{else}}<p>Active: {{#if this.googleAds.hasAds}}<span class="badge badge-success">Yes</span>{{else}}<span class="badge badge-warning">No</span>{{/if}}
+        {{#if this.googleAds.adCount}} — {{this.googleAds.adCount}} ads{{/if}}</p>
+        {{/if}}
+      </div>
+      <div class="info-card">
+        <h4>LinkedIn Ads</h4>
+        {{#if this.linkedinAds.error}}<p>{{this.linkedinAds.error}}</p>
+        {{else}}<p>{{#if this.linkedinAds.adCount}}{{this.linkedinAds.adCount}}{{else}}Data captured{{/if}}
+        {{#if this.linkedinAds.ads.length}} — {{this.linkedinAds.ads.length}} ads extracted{{/if}}</p>
+        {{/if}}
+      </div>
+    </div>
   </div>
   {{/each}}
 
