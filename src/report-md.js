@@ -92,11 +92,14 @@ export async function generateMarkdownReport(scrapedData, outputDir) {
 
       for (const [category, pages] of Object.entries(byCategory)) {
         const label = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-        md += `### ${label} Pages (${pages.length})\n\n`;
+        const navCount = pages.filter(p => p.source === 'nav').length;
+        const sitemapCount = pages.filter(p => p.source === 'sitemap').length;
+        md += `### ${label} Pages (${pages.length} total — ${navCount} in nav, ${sitemapCount} from sitemap)\n\n`;
 
         for (const sp of pages) {
           md += `#### ${sp.title || sp.url}\n\n`;
           md += `- **URL:** ${sp.url}\n`;
+          md += `- **Source:** ${sp.source === 'nav' ? 'Navigation/Footer (primary offering)' : 'Sitemap (secondary/SEO page)'}\n`;
           if (sp.metaDescription) md += `- **Description:** ${sp.metaDescription}\n`;
           md += `\n`;
 
