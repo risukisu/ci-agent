@@ -24,7 +24,7 @@
 ## What This Tool Does
 
 CI Agent is a competitive intelligence tool that automatically:
-1. **Scrapes** competitor websites for positioning, messaging, and services
+1. **Scrapes** competitor websites — homepage AND subpages (services, case studies, about) discovered from navigation and sitemap
 2. **Captures** LinkedIn and Google ad library activity
 3. **Takes screenshots** of everything for visual reference
 4. **Detects changes** between runs (new services, messaging shifts, ad activity)
@@ -50,6 +50,9 @@ You (Claude Code) provide the AI-powered analysis after each scan.
    - "Who's your first competitor? Give me their name and website URL."
    - After each: "Got it! Want to add another competitor, or is that all?"
    - Minimum 1 competitor, no maximum
+3b. **Ask about scan depth:**
+   - "How many extra pages (case studies, about, etc.) should I scan per competitor beyond their services? Default is 10. Services pages are always fully scanned regardless of this limit."
+   - Update `scraper.maxSubpages` in `src/config.js` with their answer
 4. **Write the config files:**
    - Update `src/config.js` — replace the placeholder values in the `company` object with the user's answers
    - Update `competitors.md` — add each competitor in the format `- Company Name | https://website.com/`
@@ -80,6 +83,7 @@ When the user says "run scan", "scan competitors", "run analysis", or similar:
 5. **Provide a strategic competitive analysis** based on the data:
    - Executive summary of the competitive landscape
    - Per-competitor positioning analysis (how they describe themselves, who they target)
+   - Detailed services and capabilities analysis based on subpage data
    - Key messaging themes and trends
    - Advertising activity summary
    - If changes.md exists: highlight what changed and what it might mean
@@ -105,8 +109,9 @@ output/
     report-2026-03-06.pdf  — Branded PDF report
     screenshots/           — Visual captures
       domain-website.png
-      domain-linkedin-ads.png
-      domain-google-ads.png
+      domain-services.png
+      domain-case-studies.png
+      ...
 ```
 
 - **raw-data.json** is what you should read for analysis — it has all the structured data
@@ -127,6 +132,7 @@ ci-agent/
     report-pdf.js      — Generates PDF report
     scrapers/
       website.js       — Scrapes competitor homepages
+      subpages.js    — Discovers and scrapes competitor subpages
       linkedin-ads.js  — Captures LinkedIn Ad Library results
       google-ads.js    — Captures Google Ads Transparency results
   templates/
