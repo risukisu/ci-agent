@@ -67,7 +67,7 @@ async function findPreviousRun(currentOutputDir) {
   }
 
   const previous = dirs
-    .filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d) && d !== currentName)
+    .filter(d => /^\d{4}-\d{2}-\d{2}(_\d{2}-\d{2}-\d{2})?$/.test(d) && d !== currentName)
     .sort()
     .reverse();
 
