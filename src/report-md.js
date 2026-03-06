@@ -82,6 +82,46 @@ export async function generateMarkdownReport(scrapedData, outputDir) {
       md += `![${data.competitor.name} Google Ads](${relPath})\n\n`;
     }
 
+    // Subpages
+    if (data.subpages?.length) {
+      const byCategory = {};
+      for (const sp of data.subpages) {
+        if (!byCategory[sp.category]) byCategory[sp.category] = [];
+        byCategory[sp.category].push(sp);
+      }
+
+      for (const [category, pages] of Object.entries(byCategory)) {
+        const label = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
+        md += `### ${label} Pages (${pages.length})\n\n`;
+
+        for (const sp of pages) {
+          md += `#### ${sp.title || sp.url}\n\n`;
+          md += `- **URL:** ${sp.url}\n`;
+          if (sp.metaDescription) md += `- **Description:** ${sp.metaDescription}\n`;
+          md += `\n`;
+
+          if (sp.headings?.length) {
+            md += `**Key Headings:**\n\n`;
+            for (const h of sp.headings) {
+              md += `- ${h.text}\n`;
+            }
+            md += `\n`;
+          }
+
+          if (sp.bodyText) {
+            md += `<details>\n<summary>Page Text Excerpt</summary>\n\n`;
+            md += `${sp.bodyText.substring(0, 3000)}\n\n`;
+            md += `</details>\n\n`;
+          }
+
+          if (sp.screenshot) {
+            const relPath = path.relative(outputDir, sp.screenshot).replace(/\\/g, '/');
+            md += `![${sp.title || sp.url}](${relPath})\n\n`;
+          }
+        }
+      }
+    }
+
     md += `---\n\n`;
   }
 
