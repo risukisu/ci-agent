@@ -24,7 +24,7 @@ That's it. No API keys needed.
 1. Click the green **Code** button above, then **Download ZIP**
 2. Extract the ZIP to a folder on your computer
 3. Open the folder in Claude Code (desktop app or `claude` in terminal)
-4. Claude will detect first-run and walk you through setup automatically
+4. Say **"hi"** — Claude will detect it's a fresh install and start the setup wizard
 
 ### Option B: Fork + Clone (recommended for GitHub users)
 
@@ -35,11 +35,11 @@ That's it. No API keys needed.
    cd ci-agent
    ```
 3. Open in Claude Code (desktop app or `claude` in terminal)
-4. Claude will walk you through setup
+4. Say **"hi"** — Claude will start the setup wizard
 
 ### What Setup Looks Like
 
-Claude will ask you a few questions:
+A friendly fox will greet you and ask a few questions:
 - Your company name, website, and tagline
 - Your competitors (name + website URL for each)
 
