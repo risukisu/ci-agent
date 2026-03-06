@@ -95,20 +95,27 @@ Edit `competitors.md` to add or remove competitors:
 - Another Corp | https://anothercorp.com/
 ```
 
+## Roadmap
+
+Currently CI Agent scans **competitor homepages + ad libraries**. Future releases will expand the scope:
+
+- **Subpage scraping** — Services pages, case studies, pricing pages, about/team pages
+- **Social media monitoring** — LinkedIn company pages, Twitter/X, Facebook (where available)
+- **SEO data** — Keywords, domain authority, backlink profiles
+- **Job postings** — Track hiring signals (what roles competitors are filling)
+- **Review sites** — G2, Capterra, Trustpilot ratings and review trends
+- **Tech stack detection** — What tools and platforms competitors are using
+
+Each of these will be added as individual PRs. Contributions welcome!
+
 ## Contributing
 
-Contributions welcome! This is an open-source marketing tool built for the Claude Code community.
+This is an open-source marketing tool built for the Claude Code community.
 
 1. Fork the repo
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
-
-Ideas for contributions:
-- New scrapers (social media profiles, review sites, job boards)
-- Improved change detection (service page monitoring, pricing changes)
-- Report templates (different layouts, chart generation)
-- Integration with other tools
 
 ## License
 
