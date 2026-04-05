@@ -1,6 +1,6 @@
 # CI Agent — Competitive Intelligence Tool
 
-[![CANDOR: copilot](https://img.shields.io/badge/%E4%B7%BC%20CANDOR-copilot-fee2e2?labelColor=fee2e2)](https://candor.md)
+![CANDOR: copilot](https://img.shields.io/badge/䷼%20CANDOR-copilot-fee2e2?labelColor=fee2e2)
 
 Monitor your competitors automatically. CI Agent scrapes competitor websites and ad libraries, captures screenshots, detects changes over time, and generates reports — all powered by Claude Code for AI analysis.
 
