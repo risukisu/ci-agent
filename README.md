@@ -1,6 +1,6 @@
 # CI Agent — Competitive Intelligence Tool
 
-![CANDOR: copilot](https://img.shields.io/badge/䷼%20CANDOR-copilot-fee2e2?labelColor=fee2e2)
+[![CANDOR: copilot](https://img.shields.io/badge/䷼%20CANDOR-copilot-fee2e2?labelColor=fee2e2)](https://github.com/DimwitLabs/CANDOR.md)
 
 Monitor your competitors automatically. CI Agent scrapes competitor websites and ad libraries, captures screenshots, detects changes over time, and generates reports — all powered by Claude Code for AI analysis.
 
@@ -125,4 +125,4 @@ MIT — see [LICENSE](LICENSE) for details.
 
 ---
 
-Built with [Claude Code](https://claude.ai/code) as copilot. [CANDOR: copilot](https://candor.md) — AI writes the code, I make the decisions.
+Built with [Claude Code](https://claude.ai/code) as copilot. [CANDOR: copilot](https://github.com/DimwitLabs/CANDOR.md) — AI writes the code, I make the decisions.
