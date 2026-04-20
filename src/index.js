@@ -6,6 +6,7 @@ import { loadCompetitors } from './competitors.js';
 import { scrapeWebsite } from './scrapers/website.js';
 import { scrapeLinkedInAds } from './scrapers/linkedin-ads.js';
 import { scrapeGoogleAds } from './scrapers/google-ads.js';
+import { scrapeSubpages } from './scrapers/subpages.js';
 import { detectChanges } from './changes.js';
 import { generateMarkdownReport } from './report-md.js';
 import { generatePdfReport } from './report-pdf.js';
@@ -20,7 +21,10 @@ async function main() {
   }
 
   const startTime = Date.now();
-  const date = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const date = now.toISOString().split('T')[0];
+  const time = now.toTimeString().split(' ')[0].replace(/:/g, '-');
+  const runId = `${date}_${time}`;
 
   console.log('='.repeat(60));
   console.log(`  Competitive Intelligence Agent`);
@@ -36,7 +40,7 @@ async function main() {
   }
 
   // 2. Set up output directory
-  const outputDir = path.join(CONFIG.outputDir, date);
+  const outputDir = path.join(CONFIG.outputDir, runId);
   const screenshotDir = path.join(outputDir, 'screenshots');
   await fs.mkdir(screenshotDir, { recursive: true });
 
@@ -69,6 +73,9 @@ async function main() {
     const googlePage = await context.newPage();
     data.googleAds = await scrapeGoogleAds(googlePage, competitor, screenshotDir);
     await googlePage.close();
+
+    // Scrape subpages (services, case studies, about, etc.)
+    data.subpages = await scrapeSubpages(context, competitor, screenshotDir);
 
     scrapedData.push(data);
   }

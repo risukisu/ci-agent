@@ -12,16 +12,17 @@ export const CONFIG = {
 
   // Your company info (filled in during setup)
   company: {
-    name: 'YOUR_COMPANY_NAME',
-    url: 'https://yourcompany.com',
-    tagline: 'Your company tagline',
-    description: 'Brief description of your company and what you do.',
+    name: 'Appsilon',
+    url: 'https://appsilon.com',
+    tagline: 'Open Source, Done Right for Pharma',
+    description: 'We are a technology partner for life sciences companies, delivering open-source AI, R and Python solutions, cloud-based statistical computing environments, and SAS-to-Open Source migration to accelerate drug development in regulated settings.',
   },
 
   // Scraper settings
   scraper: {
     timeout: 30_000,
     screenshotDelay: 3_000,
+    maxSubpages: 10, // max non-service pages per competitor (services are always fully scraped)
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
   },
 

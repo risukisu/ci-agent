@@ -67,7 +67,7 @@ async function findPreviousRun(currentOutputDir) {
   }
 
   const previous = dirs
-    .filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d) && d !== currentName)
+    .filter(d => /^\d{4}-\d{2}-\d{2}(_\d{2}-\d{2}-\d{2})?$/.test(d) && d !== currentName)
     .sort()
     .reverse();
 
@@ -145,6 +145,18 @@ function compareRuns(previousData, currentData) {
         field: 'Google Ads',
         description: curr.googleAds?.hasAds ? 'Started running ads' : 'Stopped running ads',
       });
+    }
+
+    // Service page changes
+    const prevServiceUrls = (prev.subpages || []).filter(s => s.category === 'services').map(s => s.url);
+    const currServiceUrls = (curr.subpages || []).filter(s => s.category === 'services').map(s => s.url);
+    const newServices = currServiceUrls.filter(u => !prevServiceUrls.includes(u));
+    const removedServices = prevServiceUrls.filter(u => !currServiceUrls.includes(u));
+    if (newServices.length > 0) {
+      details.push({ field: 'New Service Pages', description: newServices.join(', ') });
+    }
+    if (removedServices.length > 0) {
+      details.push({ field: 'Removed Service Pages', description: removedServices.join(', ') });
     }
 
     if (details.length > 0) {
