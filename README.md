@@ -6,7 +6,7 @@ Monitor your competitors automatically. CI Agent scrapes competitor websites and
 
 ## What It Does
 
-- **Website Scraping** — Captures competitor homepages: titles, meta descriptions, key headings, body text, and full screenshots
+- **Website Scraping** — Captures competitor homepages and subpages (services, case studies, about) via nav link discovery and sitemap.xml parsing
 - **Ad Library Monitoring** — Checks LinkedIn Ad Library and Google Ads Transparency Center for each competitor
 - **Change Detection** — Compares each scan against the previous run to surface changes (new messaging, updated services, ad activity shifts)
 - **Report Generation** — Produces Markdown and branded PDF reports with all captured data
@@ -101,7 +101,6 @@ Edit `competitors.md` to add or remove competitors:
 
 Currently CI Agent scans **competitor homepages + ad libraries**. Future releases will expand the scope:
 
-- **Subpage scraping** — Services pages, case studies, pricing pages, about/team pages
 - **Social media monitoring** — LinkedIn company pages, Twitter/X, Facebook (where available)
 - **SEO data** — Keywords, domain authority, backlink profiles
 - **Job postings** — Track hiring signals (what roles competitors are filling)
